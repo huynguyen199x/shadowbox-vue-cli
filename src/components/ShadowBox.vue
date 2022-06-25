@@ -330,61 +330,65 @@
                     ><span class="Polaris-Button__Text">Add Layer</span></span
                   ></button
                 ><br /><br />
-                <ul class="layer_wrap__1hYkm">
-                  <div>
-                    <li
-                      v-for="(layer, index) in layersCss"
-                      :key="index"
-                      :class="
-                        index == currentLayer
-                          ? currentLayerClass
-                          : layerLayerClass
-                      "
-                      @click="setCurrentLayer(index)"
-                      data-id="0"
-                    >
-                      <span class="layer_drag__2AEZM"
-                        ><span class="Polaris-Icon"
-                          ><svg
-                            viewBox="0 0 20 20"
-                            class="Polaris-Icon__Svg"
-                            focusable="false"
-                            aria-hidden="true"
-                          >
-                            <path
-                              d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2m0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8m0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14m6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6m0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8m0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14"
-                            ></path></svg></span></span
-                      >{{ layer
-                      }}<span class="layer_edit__u4bnF"
-                        ><span class="Polaris-Icon"
-                          ><svg
-                            viewBox="0 0 20 20"
-                            class="Polaris-Icon__Svg"
-                            focusable="false"
-                            aria-hidden="true"
-                          >
-                            <path
-                              d="M17.086 2.912a3.126 3.126 0 0 0-4.414 0l-9.379 9.379a.998.998 0 0 0-.263.464l-1 4a1 1 0 0 0 1.212 1.213l4-1c.176-.044.337-.135.465-.263l9.38-9.379a3.125 3.125 0 0 0 0-4.414zm-1.414 3L15 6.584l-1.586-1.586.672-.672a1.125 1.125 0 0 1 1.586 0 1.123 1.123 0 0 1 0 1.586zM5.414 12.998L12 6.412l1.586 1.586L7 14.584l-1.586-1.586z"
-                              fill-rule="evenodd"
-                            ></path></svg></span></span
-                      ><span
-                        @click="delLayerHandler(index)"
-                        class="layer_del__QYHb8"
-                        ><span class="Polaris-Icon"
-                          ><svg
-                            viewBox="0 0 20 20"
-                            class="Polaris-Icon__Svg"
-                            focusable="false"
-                            aria-hidden="true"
-                          >
-                            <path
-                              d="M16 6H4a1 1 0 1 0 0 2h1v9a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8h1a1 1 0 1 0 0-2zM9 4a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2H9zm2 12h2V8h-2v8zm-4 0h2V8H7v8z"
-                              fill-rule="evenodd"
-                            ></path></svg></span
-                      ></span>
-                    </li>
-                  </div>
-                </ul>
+
+                
+                  <ul class="layer_wrap__1hYkm">
+                    <div>
+                    <draggable :list="layers" :sort="true">
+                      <li
+                        v-for="(layer, index) in layersCss"
+                        :key="index"
+                        :class="
+                          index == currentLayer
+                            ? currentLayerClass
+                            : layerLayerClass
+                        "
+                        @click="setCurrentLayer(index)"
+                        data-id="0"
+                      >
+                        <span class="layer_drag__2AEZM"
+                          ><span class="Polaris-Icon"
+                            ><svg
+                              viewBox="0 0 20 20"
+                              class="Polaris-Icon__Svg"
+                              focusable="false"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2m0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8m0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14m6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6m0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8m0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14"
+                              ></path></svg></span></span
+                        >{{ layer
+                        }}<span class="layer_edit__u4bnF"
+                          ><span class="Polaris-Icon"
+                            ><svg
+                              viewBox="0 0 20 20"
+                              class="Polaris-Icon__Svg"
+                              focusable="false"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M17.086 2.912a3.126 3.126 0 0 0-4.414 0l-9.379 9.379a.998.998 0 0 0-.263.464l-1 4a1 1 0 0 0 1.212 1.213l4-1c.176-.044.337-.135.465-.263l9.38-9.379a3.125 3.125 0 0 0 0-4.414zm-1.414 3L15 6.584l-1.586-1.586.672-.672a1.125 1.125 0 0 1 1.586 0 1.123 1.123 0 0 1 0 1.586zM5.414 12.998L12 6.412l1.586 1.586L7 14.584l-1.586-1.586z"
+                                fill-rule="evenodd"
+                              ></path></svg></span></span
+                        ><span
+                          @click="delLayerHandler(index)"
+                          class="layer_del__QYHb8"
+                          ><span class="Polaris-Icon"
+                            ><svg
+                              viewBox="0 0 20 20"
+                              class="Polaris-Icon__Svg"
+                              focusable="false"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M16 6H4a1 1 0 1 0 0 2h1v9a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8h1a1 1 0 1 0 0-2zM9 4a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2H9zm2 12h2V8h-2v8zm-4 0h2V8H7v8z"
+                                fill-rule="evenodd"
+                              ></path></svg></span
+                        ></span>
+                      </li>
+                    </draggable>
+                    </div>
+                  </ul>
               </div>
             </div>
           </div>
@@ -471,8 +475,12 @@
 </template>
 
 <script>
+import draggable from "vuedraggable";
 export default {
   name: "ShadowBox",
+  components: {
+    draggable,
+  },
   data() {
     return {
       currentLayerClass: "layer_current__1y7nK",
@@ -494,14 +502,12 @@ export default {
     this.layers.push(this.shadowValue);
   },
   computed: {
-    boxShadow() {
-      var inset = this.inset ? " inset" : "";
-      return `rgba(0,0,0,${this.opacity}) ${this.shiftRight}px ${this.shiftDown}px ${this.blur}px ${this.spread}px${inset}`;
-    },
     layersCss() {
       return this.layers.map((layer) => {
         var inset = layer[5] ? " inset" : "";
-        return `rgba(${layer[0]}) ${layer[1]}px ${layer[2]}px ${layer[3]}px ${layer[4]}px${inset}`;
+        return `rgba(${this.hexToRgba(layer[0][0], layer[0][1] / 100)}) ${
+          layer[1]
+        }px ${layer[2]}px ${layer[3]}px ${layer[4]}px${inset}`;
       });
     },
     
@@ -513,7 +519,7 @@ export default {
       return `${this.layersCss.join(",")}`;
     },
     shadowRbgaColor() {
-      return `${this.hexToRgba(this.shadowColor.slice(1), this.opacity / 100)}`;
+      return [this.shadowColor, this.opacity];
     },
 
     shadowValue() {
@@ -550,7 +556,8 @@ export default {
 
   methods: {
     setShadowValue(shadowValue) {
-      this.shadowColor = shadowValue[0];
+      this.shadowColor = shadowValue[0][0];
+      this.opacity = shadowValue[0][1];
       this.shiftRight = shadowValue[1];
       this.shiftDown = shadowValue[2];
       this.blur = shadowValue[3];
@@ -566,7 +573,7 @@ export default {
     },
 
     addLayerHandler() {
-      this.layers.push([this.hexToRgba(0, 0, 0, 0), 0, 5, 3, 0.2]);
+      this.layers.push(["#000000", 0, 5, 3, 0.2, false]);
     },
 
     setCurrentLayer(index) {
@@ -580,7 +587,7 @@ export default {
     },
 
     hexToRgba(hex, opacity) {
-      var bigint = parseInt(hex, 16);
+      var bigint = parseInt(hex.slice(1), 16);
       var r = (bigint >> 16) & 255;
       var g = (bigint >> 8) & 255;
       var b = bigint & 255;
